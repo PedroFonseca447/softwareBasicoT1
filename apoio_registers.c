@@ -1,5 +1,5 @@
 // register_utils.c
-
+#include <stdint.h>
 #include "apoio_registers.h"
 
 // Função para determinar a cor com base nos bits 8 e 9 do registrador
@@ -43,9 +43,9 @@
 
     Color read_color(Register *r1, Register *r2){
 
-        unit8_t red_component = *r1 & 0xFF;
-        unit8_t green_component = (*r1 >> 8) & 0xFF;
-        unit8_t blue_component = *r2 & 0xFF;
+        uint8_t red_component = *r1 & 0xFF;
+        uint8_t green_component = (*r1 >> 8) & 0xFF;
+        uint8_t blue_component = *r2 & 0xFF;
 
 
      if(red_component == 255 && green_component == 0 && blue_component == 0){
