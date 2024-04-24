@@ -16,7 +16,7 @@ typedef enum {
     BLUE,
 } Color;
 
-// Função para determinar a cor com base nos bits 8 e 9 do registrador
+// Função para determinar a cor com base nos bits 10,11 e 12 do registrador
 Color get_color(Register *reg);
 
 #endif

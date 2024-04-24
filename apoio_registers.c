@@ -11,17 +11,18 @@ Color get_color(Register *reg) {
     }
 
     // Obtém os valores dos bits 8 e 9
-    int bit_8 = (*reg >> 8) & 0x01;
-    int bit_9 = (*reg >> 9) & 0x01;
+    int bit_10 = (*reg >> 10) & 0x01;
+    int bit_11 = (*reg >> 11) & 0x01;
+    int bit_12 = (*reg >> 12) & 0x01;
 
     // Determina a cor com base nos valores dos bits
-    if (bit_8 == 0 && bit_9 == 0) {
+    if (bit_10 == 0 && bit_11 == 0 && bit_12 == 0 ) {
         return NO_COLOR;
-    } else if (bit_8 == 1 && bit_9 == 0) {
+    } else if (bit_10 == 1) {
         return RED;
-    } else if (bit_8 == 0 && bit_9 == 1) {
+    } else if (bit_11 == 1) {
         return GREEN;
-    } else if(bit_8 == 1 && bit_9 == 1){
+    } else if(bit_12 == 1){
         return BLUE;
     }
 }   
