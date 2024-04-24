@@ -14,9 +14,13 @@ typedef enum {
     RED,
     GREEN,
     BLUE,
-} Color;
+} Color; 
 
 // Função para determinar a cor com base nos bits 10,11 e 12 do registrador
-Color get_color(Register *reg);
+
+
+Color read_color(Register *r1,Register  *r2);
+
+
 
 #endif
