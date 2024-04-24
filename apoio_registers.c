@@ -59,6 +59,40 @@
      }
 
 }
+// reset de todos os bits analisar mehlro em casa
+   void set_fabric(Register *r0,Register *r1, Register *r2, Register *r3, Register *r4, Register *r5,
+   Register *r6, Register *r7, Register *r8, Register *r9, Register *r10, Register *r11, Register *r12,
+   Register *r13, Register *r14, Register *r15)
+   {
+
+
+
+
+
+   }
+
+
+   Batery read_bateryLevel(Register *r3){
+
+      int bit0 = (*r3) & 0x01;
+      int bit1 = (*r3 >> 1) & 0x01;
+
+      if(bit0 == 0 && bit1 == 0){
+         return CRITICO;
+      }
+
+      if(bit0 == 0 && bit1 == 1){
+         return BAIXO;
+      }
+
+      if(bit0 == 1 && bit1 == 0){
+         return MEDIO;
+      }
+
+      if(bit0 == 1 && bit1 == 1){
+         return ALTO;
+      }
+   }
 
 
 

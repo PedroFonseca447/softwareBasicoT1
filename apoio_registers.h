@@ -16,11 +16,19 @@ typedef enum {
     BLUE,
 } Color; 
 
+typedef enum {
+    CRITICO,
+    BAIXO,
+    MEDIO,
+    ALTO,
+
+} Batery;
+
 // Função para determinar a cor com base nos bits 10,11 e 12 do registrador
 
 
 Color read_color(Register *r1,Register  *r2);
 
-
+Batery read_bateryLevel(Register *r3);
 
 #endif
