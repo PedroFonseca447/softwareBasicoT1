@@ -50,18 +50,15 @@ int registers_release(void* map, int file_size, int fd) {
 
     return 0;
 }
-void imprime_binario(unsigned short x)
-{
-    for (int i = 31; i >= 0; i--) {
-        unsigned int mask = 0x1 << i;
-        if ((x & mask) == 0) {
-            printf("0");
-        } else {
-            printf("1");
-        }
+
+void print_binary(unsigned short value) {
+    int i;
+    for (i = 15; i >= 0; i--) {
+        printf("%d", (value >> i) & 1);
     }
     printf("\n");
 }
+
 
 int main() {
     int fd;
@@ -76,16 +73,18 @@ int main() {
     unsigned short *r1 = base_address + 0x01;
     unsigned short *r2 = base_address + 0x02;
 
-      set_color( *r0,1,1, 1); 
-  imprime_binario(&r0);
-    //printf("Current value of R0: 0x%02x\n", *r0);
-    //printf("Current value of R1: 0x%02x\n", *r1);
+      
+  
+    printf("Current value of R0: 0x%02x\n", *r0);
+    printf("Current value of R1: 0x%02x\n", *r1);
 
 
 
     // Write a new value to R0
    // *r0 = *r0 | 0x00;
+        set_color(r0,1,0, 1); 
 
+    print_binary(*r0);
     // Release resources
     if (registers_release(map, FILE_SIZE, fd) == -1) {
         return EXIT_FAILURE;
