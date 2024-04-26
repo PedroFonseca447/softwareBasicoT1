@@ -6,38 +6,40 @@
 
 
 
-    void set_color(Register *r0, Register *r1, Register *r2, int bit){
+    void set_color(Register *r0, Register *r1, Register *r2, int bit_10, int bit_11, int bit_12){
 
-        if( bit == 10){
+        if( bit_10 == 1){
             *r0 |= (0x1 << 10); //ativa o bit de cor RED
-            *r0 &= ~(0x1 << 11);//zera o bit 11
-            *r0 &= ~(0x1 << 12);//zera o bit 12
-
-            //a parte que muda no r1
-                *r1 &= ~(0xFFFF);//zera os bit de color em r1
-                *r2 &= (0xFFFF);//zera os bit de color em r2
+           
                 *r1 |= 255;//do 0-7 preenche com 255
             
+        } else if( bit_10 == 0){
+          *r0 &= ~(0x1 << 10);//zera o bit 10
+          *r1 &= ~(0xFF);//zera os bit de color em r1 do intervalo de 0-7
         }
-        else if(bit == 11){
-            *r0 |= (0x1 << 11); //ativa o bit de cor verde
-            *r0 &= ~(0x1 << 10);//zera o bit 10
-            *r0 &= ~(0x1 << 12);//zera o bit 12
 
-            //a parte que muda no r1 ou r2
-            *r1 &= ~(0xFFFF);//zera os bit de color em r1
-            *r2 &= (0xFFFF);//zera os bit de color em r2
-            *r1 |= (255<< 8);//ativa os bits de cor verde 
-           
+        if( bit_11 == 1){
+            *r0 |= (0x1 << 11);//seta para 1 o bit 11 no registrador 0 
+
+               *r1 |= (255<<8);// preenche os bits de cor em verde 
+              
+        } else if( bit_11== 0){
+         *r0 &= ~(0x1 << 10);//zera o bit 10
+          *r1 &= ~(0xFF00);//zera os bit de color em r1 do intervalo 8-15
         }
-         else if(bit == 12){
-            *r0 |= (0x1 << 12); //ativa o bit de cor BLUE
-            *r0 &= ~(0x1 << 10);//zera o bit 10
-            *r0 &= ~(0x1 << 11);//zera o bit 12
-            
-            *r1 &= ~(0xFFFF);//zera os bit de color em r1
-            *r2 |= 255;// seta os bits de 0-7 no r2 para azul 
+        
+        if( bit_12 == 1){
+         
+         *r0 |= (0x1 << 12); // ativa o bit de cor BLUE
+
+          *r2 |= 255;// preenche os bits de cor em verde no registrador
+
+        }   else if( bit_12 == 0){
+         *r0 &= ~(0x1 << 12);//zera o bit 12
+          *r1 &= ~(0xFF);//zera os bit de color em r1 do intervalo 0-7
         }
+
+
         
 }
 
