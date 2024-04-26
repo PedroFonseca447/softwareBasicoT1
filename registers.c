@@ -4,7 +4,7 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <sys/stat.h>
-//#include <libregisters.h>
+#include "libregisters.h"
 
 #define FILE_PATH "registers.bin"
 #define FILE_SIZE 1024  // Same size as used in the first program
@@ -82,13 +82,13 @@ int main() {
     unsigned short *r1 = base_address + 0x01;
     unsigned short *r2 = base_address + 0x02;
     
-    //set_color( &r0, &r1, &r2,1,1,0 );
+    set_color( r0, r1, r2,1,0,1);
 
     printf("Initial value of R0: 0x%02x\n", *r0);
     printf("Initial value of R1: 0x%02x\n", *r1);
 
     // Write a new value to R0
-    *r0 = *r0 | 0x00;
+   // *r0 = *r0 | 0x00;
 
     // Release resources
     if (registers_release(map, FILE_SIZE, fd) == -1) {
