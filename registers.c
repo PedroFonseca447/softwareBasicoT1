@@ -62,8 +62,13 @@ int main() {
     unsigned short *base_address = (unsigned short *)map;
     unsigned short *r0 = base_address + 0x00;
     unsigned short *r1 = base_address + 0x01;
+
+      set_color( r0, r1, r2, 1,0,1); 
+
     printf("Current value of R0: 0x%02x\n", *r0);
     printf("Current value of R1: 0x%02x\n", *r1);
+
+
 
     // Write a new value to R0
     *r0 = *r0 | 0x00;
