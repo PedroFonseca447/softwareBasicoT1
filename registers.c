@@ -82,7 +82,8 @@ int main() {
 
     // Write a new value to R0
    // *r0 = *r0 | 0x00;
-        set_color(r0,1,0, 1); 
+    set_colorLed(r0,1,0, 1); 
+    set_colorDisplay(r1,r2,0 , 1 ,1 );
 
     print_binary(*r0);
     // Release resources
