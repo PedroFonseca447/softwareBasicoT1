@@ -4,6 +4,7 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <sys/stat.h>
+//#include <libregisters.h>
 
 #define FILE_PATH "registers.bin"
 #define FILE_SIZE 1024  // Same size as used in the first program
@@ -79,20 +80,10 @@ int main() {
     unsigned short *base_address = (unsigned short *)map;
     unsigned short *r0 = base_address + 0x00;
     unsigned short *r1 = base_address + 0x01;
-       unsigned short *r2 = base_address + 0x00;
-    unsigned short *r3 = base_address + 0x01;
-       unsigned short *r4 = base_address + 0x00;
-    unsigned short *r5 = base_address + 0x01;
-       unsigned short *r6 = base_address + 0x00;
-    unsigned short *r7 = base_address + 0x01;
-       unsigned short *r8 = base_address + 0x00;
-    unsigned short *r9 = base_address + 0x01;
-       unsigned short *r10 = base_address + 0x00;
-    unsigned short *r11 = base_address + 0x01;
-       unsigned short *r12 = base_address + 0x00;
-    unsigned short *r13 = base_address + 0x01;
-       unsigned short *r14 = base_address + 0x00;
-    unsigned short *r15 = base_address + 0x01;
+    unsigned short *r2 = base_address + 0x02;
+    
+    //set_color( &r0, &r1, &r2,1,1,0 );
+
     printf("Initial value of R0: 0x%02x\n", *r0);
     printf("Initial value of R1: 0x%02x\n", *r1);
 
@@ -103,8 +94,7 @@ int main() {
     if (registers_release(map, FILE_SIZE, fd) == -1) {
         return EXIT_FAILURE;
     }
-     printf("Valor de R0 em binário: ");
-    print_binary(r0);
+    
 
     return EXIT_SUCCESS;
 }

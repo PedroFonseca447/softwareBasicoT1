@@ -44,8 +44,6 @@ void set_color( uint16_t *r0, uint16_t *r1, uint16_t *r2, int bit10, int bit11 ,
 }
 
 // Funções de controle para o hardware
-void display_message(const char *message);
-void control_status_led(int battery_level);
 
 #endif /* REGISTERS_H */
 
