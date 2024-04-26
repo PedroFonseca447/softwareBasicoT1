@@ -65,6 +65,15 @@ void setOnOff(unsigned short *r0, int bit){
     }
 }
 
+void setOnOff_Operacao(unsigned short *r0, int bit){
+
+    if(bit == 0 ){
+        *r0 |= (0x1 << 9);
+    }
+    else if(bit == 1){
+        *r0 &= ~(0x1 << 9);
+    }
+}
 // criar outro com as especificações acima só que mudando apenas os rgb
 
 
