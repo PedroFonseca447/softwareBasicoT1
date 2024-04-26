@@ -62,16 +62,17 @@ int main() {
     unsigned short *base_address = (unsigned short *)map;
     unsigned short *r0 = base_address + 0x00;
     unsigned short *r1 = base_address + 0x01;
+    unsigned short *r2 = base_address + 0x02;
 
-      set_color( r0, r1, r2, 1,0,1); 
+      set_color( *r0,1,1, 1); 
 
-    printf("Current value of R0: 0x%02x\n", *r0);
-    printf("Current value of R1: 0x%02x\n", *r1);
+    //printf("Current value of R0: 0x%02x\n", *r0);
+    //printf("Current value of R1: 0x%02x\n", *r1);
 
 
 
     // Write a new value to R0
-    *r0 = *r0 | 0x00;
+   // *r0 = *r0 | 0x00;
 
     // Release resources
     if (registers_release(map, FILE_SIZE, fd) == -1) {
