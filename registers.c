@@ -77,7 +77,7 @@ int main() {
     unsigned short *r2 = base_address + 0x02;
 
       set_color( *r0,1,1, 1); 
-
+  imprime_binario(&r0);
     //printf("Current value of R0: 0x%02x\n", *r0);
     //printf("Current value of R1: 0x%02x\n", *r1);
 
