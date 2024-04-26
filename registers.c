@@ -84,6 +84,7 @@ int main() {
    // *r0 = *r0 | 0x00;
     set_colorLed(r0,1,0, 1); 
     set_colorDisplay(r1,r2,0 , 1 ,1 );
+    setOnOff(r0,1);
 
     print_binary(*r0);
     // Release resources

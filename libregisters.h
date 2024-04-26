@@ -54,6 +54,17 @@ void set_colorDisplay(unsigned short*r1, unsigned short *r2, int red,  int green
     }
     
 }
+
+void setOnOff(unsigned short *r0, int bit){
+
+    if(bit == 1 ){
+        *r0 |= (0x1 << 0);
+    }
+    else if(bit == 0){
+        *r0 &= ~(0x1 << 0);
+    }
+}
+
 // criar outro com as especificações acima só que mudando apenas os rgb
 
 
