@@ -50,6 +50,18 @@ int registers_release(void* map, int file_size, int fd) {
 
     return 0;
 }
+void imprime_binario(unsigned short x)
+{
+    for (int i = 31; i >= 0; i--) {
+        unsigned int mask = 0x1 << i;
+        if ((x & mask) == 0) {
+            printf("0");
+        } else {
+            printf("1");
+        }
+    }
+    printf("\n");
+}
 
 int main() {
     int fd;
