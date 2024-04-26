@@ -1,34 +1,19 @@
-// register_utils.h
+#ifndef REGISTERS_H
+#define REGISTERS_H
 
-#ifndef REGISTER_UTILS_H
-#define REGISTER_UTILS_H
+#include <stdint.h>
 
-#include <stdio.h>
-
-// Define o tipo de dado para representar um registrador de 16 bits
-typedef unsigned short Register;
-
-// Define um tipo de enumeração para representar as cores
-typedef enum {
-    NO_COLOR,
-    RED,
-    GREEN,
-    BLUE,
-} Color; 
-
-typedef enum {
-    CRITICO,
-    BAIXO,
-    MEDIO,
-    ALTO,
-
-} Batery;
-
-// Função para determinar a cor com base nos bits 10,11 e 12 do registrador
+// Definições dos registradores
 
 
-Color read_color(Register *r1,Register  *r2);
+// Funções para leitura e escrita nos registradores
+uint16_t read_register(uint16_t *reg);
+void write_register(uint16_t *reg, uint16_t value);
 
-Batery read_bateryLevel(Register *r3);
+// Funções de controle para o hardware
+void display_message(const char *message);
+void control_status_led(int battery_level);
 
-#endif
+#endif /* REGISTERS_H */
+
+
