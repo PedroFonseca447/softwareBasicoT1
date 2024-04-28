@@ -74,6 +74,35 @@ void setOnOff_Operacao(unsigned short *r0, int bit){
         *r0 &= ~(0x1 << 9);
     }
 }
+
+
+void setExibicao( unsigned short *r0, int bit1, int bit2){
+
+    if( bit1 == 0 && bit2 == 0){ 
+        //estatico
+          *r0 &= ~(0x1 << 2);
+           *r0 &= ~(0x1 << 1);
+    }
+
+    if( bit1 == 0 && bit2== 1){
+        //deslizante
+         *r0 &= ~(0x1 << 2);
+         *r0 |= (0x1 << 1);
+    }
+
+    if( bit1 == 1 && bit2 == 0){
+        //piscante
+        *r0 |= (0x1 << 2);
+         *r0 &= ~(0x1 << 1);
+    }
+
+    if( bit1 == 1 && bit2 == 1){
+        //deslizante/piscante
+        *r0 |= (0x1 << 2);
+        *r0 |= (0x1 << 1);
+    }
+ 
+}
 // criar outro com as especificações acima só que mudando apenas os rgb
 
 
