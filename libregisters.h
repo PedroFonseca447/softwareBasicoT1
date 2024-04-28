@@ -106,7 +106,35 @@ void setExibicao( unsigned short *r0, int bit1, int bit2){
 // criar outro com as especificações acima só que mudando apenas os rgb
 
 
-// Funções de controle para o hardware
+//ainda com alguns problemas 
+void setVelocidade(unsigned short *r0, int velocidade){
+
+    int velo = (velocidade / 100) -1;
+
+    *r0 &= ~(0x3F << 3);
+
+    *r0 |= (velo & 0x3F) << 3;
+} 
+
+
+
+// Funções de GET
+
+
+const char * getEstadoDisplay( unsigned short *r0){
+
+    return (*r0 & ( 0x1 << 0)) == 0 ? "desligado" : "ligado";
+}
+
+const char * getEstadoLed( unsigned short *r0){
+
+    return (*r0 & ( 0x1 << 9)) == 0 ? "desligado" : "ligado";
+}
+
+const char * getEstadoLed( unsigned short *r0){
+
+    return (*r0 & ( 0x1 << 9)) == 0 ? "desligado" : "ligado";
+}
 
 #endif /* REGISTERS_H */
 

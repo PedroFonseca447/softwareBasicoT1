@@ -89,6 +89,8 @@ int main() {
     //ta invertido
     setExibicao(r0, 1,1);
 
+    printf("O display esta %s\n", getEstadoDisplay(r0));
+
     print_binary(*r0);
     // Release resources
     if (registers_release(map, FILE_SIZE, fd) == -1) {
