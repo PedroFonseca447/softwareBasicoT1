@@ -96,7 +96,9 @@ int main() {
 
    
 
-    printf("N vezes %d\n", calcularQuantidadeMensagem(r3));
+    printf("N vezes %d\n", calcularVelocidade(r0));
+    
+    printf("N vezes %f\n", calcularTemperatura(r3));
 
     print_binary(*r3);
     // Release resources

@@ -246,6 +246,39 @@ int  calcularQuantidadeMensagem ( unsigned short *r3){
     return quantidade;
 }
 
+int  calcularVelocidade ( unsigned short *r0){
+
+    int quantidade =0;
+
+    unsigned short bits_relevantes = ( *r0>> 3) & 0xF;
+
+    for(int i = 0; i < 6; i++){
+
+        if(bits_relevantes & (0x1 << i)){
+            quantidade += (1<<i);
+        
+        }
+
+    }
+    return quantidade*100;
+}
+
+float calcularTemperatura(unsigned short *r3) {
+    // Extrair os bits relevantes do intervalo [6, 15]
+    unsigned short bits_relevantes = (*r3 >> 6) & 0x3FF;
+
+    // Converter para decimal e considerar complemento de dois para valores negativos
+    int valor_decimal;
+    if (bits_relevantes & 0x200) { // Se o bit mais significativo estiver definido, é negativo
+        valor_decimal = -(0x3FF - bits_relevantes + 1);
+    } else {
+        valor_decimal = bits_relevantes;
+    }
+
+    // Calcular a temperatura em graus Celsius
+    float temperatura = valor_decimal / 10.0f;
+    return temperatura;
+}
 
 
 #endif /* REGISTERS_H */
