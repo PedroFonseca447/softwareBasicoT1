@@ -72,6 +72,7 @@ int main() {
     unsigned short *r0 = base_address + 0x00;
     unsigned short *r1 = base_address + 0x01;
     unsigned short *r2 = base_address + 0x02;
+    unsigned short *r3 = base_address + 0x03;
 
       
   
@@ -82,16 +83,22 @@ int main() {
 
     // Write a new value to R0
    // *r0 = *r0 | 0x00;
-    set_colorLed(r0,0,0, 1); 
-    set_colorDisplay(r1,r2,0 , 0 ,1 );
+    set_colorLed(r0,1,0, 1); 
+    set_colorDisplay(r1,r2,0 , 1 ,1 );
     setOnOff(r0,1);
     setOnOff_Operacao(r0,1);
     //ta invertido
     setExibicao(r0, 1,1);
 
-    printf("O display esta %s\n", getEstadoDisplay(r0));
+    //("O display esta %s\n", getEstadoDisplay(r0));
 
-    print_binary(*r0);
+    printf("O display esta %s\n", getModoExibicao(r0));
+
+   
+
+    printf("N vezes %d\n", calcularQuantidadeMensagem(r3));
+
+    print_binary(*r3);
     // Release resources
     if (registers_release(map, FILE_SIZE, fd) == -1) {
         return EXIT_FAILURE;

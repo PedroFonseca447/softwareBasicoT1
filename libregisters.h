@@ -131,10 +131,122 @@ const char * getEstadoLed( unsigned short *r0){
     return (*r0 & ( 0x1 << 9)) == 0 ? "desligado" : "ligado";
 }
 
-const char * getEstadoLed( unsigned short *r0){
+const char * getCorLed( unsigned short *r0){
 
-    return (*r0 & ( 0x1 << 9)) == 0 ? "desligado" : "ligado";
+    if ((*r0 & (0x1 << 10)) && (*r0 & (0x1 << 11)) && (*r0 & (0x1 << 12))) {
+    return "white";
+    }
+
+    if ((*r0 & (0x1 << 10)) && (*r0 & (0x1 << 11)) && !(*r0 & (0x1 << 12))) {
+    return "yellow";
+    }
+
+    if (!(*r0 & (0x1 << 10)) && (*r0 & (0x1 << 11)) && (*r0 & (0x1 << 12))) {
+    return "cian";
+    }
+
+    if ((*r0 & (0x1 << 10)) && !(*r0 & (0x1 << 11)) && (*r0 & (0x1 << 12))) {
+    return "pink";
+    }
+
+    if ((*r0 & (0x1 << 10)) && !(*r0 & (0x1 << 11)) && !(*r0 & (0x1 << 12))) {
+    return "red";
+    }
+
+    if (!(*r0 & (0x1 << 10)) && (*r0 & (0x1 << 11)) && !(*r0 & (0x1 << 12))) {
+    return "green";
+    }
+
+    if (!(*r0 & (0x1 << 10)) && !(*r0 & (0x1 << 11)) && (*r0 & (0x1 << 12))) {
+    return "blue";
+    }
+
 }
+
+const char * getCorDisplay( unsigned short *r1 , unsigned short * r2 ){
+
+    if ((*r1 & (0x1 << 1)) && (*r1 & (0x1 << 8)) && (*r2 & (0x1 << 1))) {
+    return "white";
+    }
+
+    if ((*r1 & (0x1 << 1)) && (*r1 & (0x1 << 8)) && !(*r2 & (0x1 << 1))) {
+    return "yellow";
+    }
+
+    if (!(*r1 & (0x1 << 1)) && (*r1 & (0x1 << 8)) && (*r2 & (0x1 << 1))) {
+    return "cian";
+    }
+
+    if ((*r1 & (0x1 << 1)) && !(*r1 & (0x1 << 8)) && (*r2 & (0x1 << 1))) {
+    return "pink";
+    }
+
+    if ((*r1 & (0x1 << 1)) && !(*r1 & (0x1 << 8)) && !(*r2 & (0x1 << 1))) {
+    return "red";
+    }
+
+    if (!(*r1 & (0x1 << 1)) && (*r1 & (0x1 << 8)) && !(*r2 & (0x1 << 1))) {
+    return "green";
+    }
+
+    if (!(*r1 & (0x1 << 1)) && !(*r1 & (0x1 << 8)) && (*r2 & (0x1 << 1))) {
+    return "blue";
+    }
+
+}
+
+const char * getBateryLevel( unsigned short * r3){
+
+    if (!(*r3 & (0x1 << 0)) && !(*r3 & (0x1 << 1))) {
+    return "critico";
+    }
+
+    if (!(*r3 & (0x1 << 0)) && (*r3 & (0x1 << 1))) {
+    return "baixo";
+    }
+
+    if ((*r3 & (0x1 << 0)) && !(*r3 & (0x1 << 1))) {
+    return "médio";
+    }
+
+    if ((*r3 & (0x1 << 0)) && (*r3 & (0x1 << 1))) {
+    return "alto";
+    }
+    
+}
+
+const char * getModoExibicao( unsigned short *r0){
+     if (!(*r0 & (0x1 << 1)) && !(*r0 & (0x1 << 2))) {
+        return "estático";
+    }
+    if (!(*r0 & (0x1 << 1)) && (*r0 & (0x1 << 2))) {
+        return "deslizante";
+    }
+    if ((*r0 & (0x1 << 1)) && !(*r0 & (0x1 << 2))) {
+        return "piscante";
+    }
+    if ((*r0 & (0x1 << 1)) && (*r0 & (0x1 << 2))) {
+        return "deslizante/piscante";
+    }
+}
+
+int  calcularQuantidadeMensagem ( unsigned short *r3){
+
+    int quantidade =0;
+
+    unsigned short bits_relevantes = ( *r3>> 2) & 0xF;
+
+    for(int i = 0; i < 4; i++){
+
+        if(bits_relevantes & (0x1 << i)){
+            quantidade += (1<<i);
+        }
+
+    }
+    return quantidade;
+}
+
+
 
 #endif /* REGISTERS_H */
 
