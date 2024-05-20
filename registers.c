@@ -73,9 +73,21 @@ int main() {
     unsigned short *r1 = base_address + 0x01;
     unsigned short *r2 = base_address + 0x02;
     unsigned short *r3 = base_address + 0x03;
+    unsigned short *r4 = base_address + 0x04;
+    unsigned short *r5 = base_address + 0x05;
+    unsigned short *r6 = base_address + 0x06;  
+    unsigned short *r7 = base_address + 0x07;
+    unsigned short *r8 = base_address + 0x08;
+    unsigned short *r9 = base_address + 0x09;
+    unsigned short *r10 = base_address + 0x10;
+    unsigned short *r11 = base_address + 0x11;
+    unsigned short *r12 = base_address + 0x12;
+    unsigned short *r13 = base_address + 0x13;
+    unsigned short *r14 = base_address + 0x14;
+    unsigned short *r15 = base_address + 0x15;
 
-      
-  
+
+
     printf("Current value of R0: 0x%02x\n", *r0);
     printf("Current value of R1: 0x%02x\n", *r1);
 
@@ -96,11 +108,13 @@ int main() {
 
    
 
+    setPalavras(r4, 'H', 'ó');
+
     printf("N vezes %d\n", calcularVelocidade(r0));
     
     printf("N vezes %f\n", calcularTemperatura(r3));
 
-    print_binary(*r3);
+    print_binary(*r4);
     // Release resources
     if (registers_release(map, FILE_SIZE, fd) == -1) {
         return EXIT_FAILURE;
