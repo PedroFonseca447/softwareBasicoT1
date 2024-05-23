@@ -117,6 +117,116 @@ void setVelocidade(unsigned short *r0, int velocidade){
 } 
 
 
+unsigned char mapearLetra(unsigned char letra) {
+    
+    switch (letra)
+     {
+        case 'A': return 0b01000001;
+        case 0xC0: return 0b11000000; //À
+        case 0xC1: return 0b11000001;    // Á
+        case 0xC2: return 0b11000010;   // Â
+        case 0xC3: return 0b11000011; // Ã
+        case 'B': return 0b01000010;
+        case 'C': return 0b01000011;
+        case 0xC7: return 0b11000111; //Ç
+        case 'D': return 0b01000100;
+        case 'E': return 0b01000101;
+        case 0xC9: return 0b11001001; //É
+        case 0xCA: return 0b11001010; // Ê
+        case 'F': return 0b01000110;
+        case 'G': return 0b01000111;
+        case 'H': return 0b01001000;
+        case 'I': return 0b01001001;
+        case 0xCD: return 0b11001101; //Í
+        case 'J': return 0b01001010;
+        case 'K': return 0b01001011;
+        case 'L': return 0b01001100;
+        case 'M': return 0b01001101;
+        case 'N': return 0b01001110;
+        case 'O': return 0b01001111;
+        case 0xD3: return 0b11010011; //Ó
+        case 0xD4: return 0b11010100; //Ô
+        case 0xD5: return 0b11010101; //Õ
+        case 'P': return 0b01010000;
+        case 'Q': return 0b01010001;
+        case 'R': return 0b01010010;
+        case 'S': return 0b01010011;
+        case 'T': return 0b01010100;
+        case 'U': return 0b01010101;
+        case 0xDA: return 0b11011010; //Ú
+        case 'V': return 0b01010110;
+        case 'W': return 0b01010111;
+        case 'X': return 0b01011000;
+        case 'Y': return 0b01011001;
+        case 'Z': return 0b01011010;
+
+        //minúsculas
+        case 'a': return 0b01100001;
+        case 0xE0: return 0b11100000; //à
+        case 0xE1: return 0b11100001; //á
+        case 0xE2: return 0b11100010; //â
+        case 0xE3: return 0b11100011; //ã
+        case 'b': return 0b01100010;
+        case 'c': return 0b01100011;
+        case 0xE7: return 0b11100111; //ç
+        case 'd': return 0b01100100;
+        case 'e': return 0b01100101;
+        case 0xE9: return 0b11101001; // é
+        case 0xEA: return 0b11101010; // ê 
+        case 'f': return 0b01100110;
+        case 'g': return 0b01100111;
+        case 'h': return 0b01101000;
+        case 'i': return 0b01101001;
+        case 0xED: return 0b11101101; //í 
+        case 'j': return 0b01101010;
+        case 'k': return 0b01101011;
+        case 'l': return 0b01101100;
+        case 'm': return 0b01101101;
+        case 'n': return 0b01101110;
+        case 'o': return 0b01101111;
+        case 0xF3: return 0b11110011; //ó
+        case 0xF4: return 0b11110100; //ô
+        case 0xF5: return 0b11110101; //õ 
+        case 'p': return 0b01110000;
+        case 'q': return 0b01110001;
+        case 'r': return 0b01110010;
+        case 's': return 0b01110011;
+        case 't': return 0b01110100;
+        case 'u': return 0b01110101;
+        case 0xFA: return 0b11111010; //ú
+        case 'v': return 0b01110110;
+        case 'w': return 0b01110111;
+        case 'x': return 0b01111000;
+        case 'y': return 0b01111001;
+        case 'z': return 0b01111010;
+            default:
+             printf("Letra inválida! Forneça uma letra válida.\n");
+             return 0;
+    }
+    }
+
+
+void setPalavras( unsigned short *reg, char letra, char letra2 ){
+
+   unsigned char valor1 = mapearLetra(letra);
+   unsigned char valor2 = mapearLetra(letra2);
+
+
+   if(valor1 && valor2){
+
+    *reg &= 0x0000;
+    *reg |= valor1;
+    *reg |= (valor2 << 8);
+
+    
+   } else{
+
+    printf("Erro");
+   }
+
+}
+
+
 
 // Funções de GET
 
@@ -280,114 +390,7 @@ float calcularTemperatura(unsigned short *r3) {
     return temperatura;
 }
 
-unsigned char mapearLetra(unsigned char letra) {
-    
-    switch (letra)
-     {
-        case 'A': return 0b01000001;
-        case 0xC0: return 0b11000000; //À
-        case 0xC1: return 0b11000001;    // Á
-        case 0xC2: return 0b11000010;   // Â
-        case 0xC3: return 0b11000011; // Ã
-        case 'B': return 0b01000010;
-        case 'C': return 0b01000011;
-        case 0xC7: return 0b11000111; //Ç
-        case 'D': return 0b01000100;
-        case 'E': return 0b01000101;
-        case 0xC9: return 0b11001001; //É
-        case 0xCA: return 0b11001010; // Ê
-        case 'F': return 0b01000110;
-        case 'G': return 0b01000111;
-        case 'H': return 0b01001000;
-        case 'I': return 0b01001001;
-        case 0xCD: return 0b11001101; //Í
-        case 'J': return 0b01001010;
-        case 'K': return 0b01001011;
-        case 'L': return 0b01001100;
-        case 'M': return 0b01001101;
-        case 'N': return 0b01001110;
-        case 'O': return 0b01001111;
-        case 0xD3: return 0b11010011; //Ó
-        case 0xD4: return 0b11010100; //Ô
-        case 0xD5: return 0b11010101; //Õ
-        case 'P': return 0b01010000;
-        case 'Q': return 0b01010001;
-        case 'R': return 0b01010010;
-        case 'S': return 0b01010011;
-        case 'T': return 0b01010100;
-        case 'U': return 0b01010101;
-        case 0xDA: return 0b11011010; //Ú
-        case 'V': return 0b01010110;
-        case 'W': return 0b01010111;
-        case 'X': return 0b01011000;
-        case 'Y': return 0b01011001;
-        case 'Z': return 0b01011010;
 
-        //minúsculas
-        case 'a': return 0b01100001;
-        case 0xE0: return 0b11100000; //à
-        case 0xE1: return 0b11100001; //á
-        case 0xE2: return 0b11100010; //â
-        case 0xE3: return 0b11100011; //ã
-        case 'b': return 0b01100010;
-        case 'c': return 0b01100011;
-        case 0xE7: return 0b11100111; //ç
-        case 'd': return 0b01100100;
-        case 'e': return 0b01100101;
-        case 0xE9: return 0b11101001; // é
-        case 0xEA: return 0b11101010; // ê 
-        case 'f': return 0b01100110;
-        case 'g': return 0b01100111;
-        case 'h': return 0b01101000;
-        case 'i': return 0b01101001;
-        case 0xED: return 0b11101101; //í 
-        case 'j': return 0b01101010;
-        case 'k': return 0b01101011;
-        case 'l': return 0b01101100;
-        case 'm': return 0b01101101;
-        case 'n': return 0b01101110;
-        case 'o': return 0b01101111;
-        case 0xF3: return 0b11110011; //ó
-        case 0xF4: return 0b11110100; //ô
-        case 0xF5: return 0b11110101; //õ 
-        case 'p': return 0b01110000;
-        case 'q': return 0b01110001;
-        case 'r': return 0b01110010;
-        case 's': return 0b01110011;
-        case 't': return 0b01110100;
-        case 'u': return 0b01110101;
-        case 0xFA: return 0b11111010; //ú
-        case 'v': return 0b01110110;
-        case 'w': return 0b01110111;
-        case 'x': return 0b01111000;
-        case 'y': return 0b01111001;
-        case 'z': return 0b01111010;
-            default:
-             printf("Letra inválida! Forneça uma letra válida.\n");
-             return 0;
-    }
-    }
-
-
-void setPalavras( unsigned short *reg, char letra, char letra2 ){
-
-   unsigned char valor1 = mapearLetra(letra);
-   unsigned char valor2 = mapearLetra(letra2);
-
-
-   if(valor1 && valor2){
-
-    *reg &= 0x0000;
-    *reg |= valor1;
-    *reg |= (valor2 << 8);
-
-    
-   } else{
-
-    printf("Erro");
-   }
-
-}
 
 char mapearCaractere(unsigned char valor) {
     switch (valor) {
