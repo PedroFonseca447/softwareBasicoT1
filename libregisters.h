@@ -389,6 +389,81 @@ void setPalavras( unsigned short *reg, char letra, char letra2 ){
 
 }
 
+char mapearCaractere(unsigned char valor) {
+    switch (valor) {
+        case 0b01000001: return 'A';
+        case 0b01000010: return 'B';
+        case 0b01000011: return 'C';
+        case 0b01000100: return 'D';
+        case 0b01000101: return 'E';
+        case 0b01000110: return 'F';
+        case 0b01000111: return 'G';
+        case 0b01001000: return 'H';
+        case 0b01001001: return 'I';
+        case 0b01001010: return 'J';
+        case 0b01001011: return 'K';
+        case 0b01001100: return 'L';
+        case 0b01001101: return 'M';
+        case 0b01001110: return 'N';
+        case 0b01001111: return 'O';
+        case 0b01010000: return 'P';
+        case 0b01010001: return 'Q';
+        case 0b01010010: return 'R';
+        case 0b01010011: return 'S';
+        case 0b01010100: return 'T';
+        case 0b01010101: return 'U';
+        case 0b01010110: return 'V';
+        case 0b01010111: return 'W';
+        case 0b01011000: return 'X';
+        case 0b01011001: return 'Y';
+        case 0b01011010: return 'Z';
+        case 0b01100001: return 'a';
+        case 0b01100010: return 'b';
+        case 0b01100011: return 'c';
+        case 0b01100100: return 'd';
+        case 0b01100101: return 'e';
+        case 0b01100110: return 'f';
+        case 0b01100111: return 'g';
+        case 0b01101000: return 'h';
+        case 0b01101001: return 'i';
+        case 0b01101010: return 'j';
+        case 0b01101011: return 'k';
+        case 0b01101100: return 'l';
+        case 0b01101101: return 'm';
+        case 0b01101110: return 'n';
+        case 0b01101111: return 'o';
+        case 0b01110000: return 'p';
+        case 0b01110001: return 'q';
+        case 0b01110010: return 'r';
+        case 0b01110011: return 's';
+        case 0b01110100: return 't';
+        case 0b01110101: return 'u';
+        case 0b01110110: return 'v';
+        case 0b01110111: return 'w';
+        case 0b01111000: return 'x';
+        case 0b01111001: return 'y';
+        case 0b01111010: return 'z';
+           default:
+            printf("Valor inválido! Não corresponde a uma letra.\n");
+            return '\0'; // Retorna um caractere nulo para indicar erro
+    }
+}
+
+char getLetra(unsigned short *reg, int pos){
+
+    if(pos == 0){
+        return mapearCaractere( *reg & 0xFF); //0-7
+    }
+
+    else if(pos == 1){
+        return mapearCaractere ((*reg >> 8) & 0xFF);//bit 8-15
+
+    }
+
+    
+}
+
+
 #endif /* REGISTERS_H */
 
 

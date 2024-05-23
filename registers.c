@@ -108,11 +108,16 @@ int main() {
 
    
 
-    setPalavras(r4, 'H', 'ó');
+    setPalavras(r7, 'l', 'p');
 
     printf("N vezes %d\n", calcularVelocidade(r0));
     
     printf("N vezes %f\n", calcularTemperatura(r3));
+
+    printf("O display esta: %c\n", getLetra(r5,0));
+
+
+    
 
     print_binary(*r4);
     // Release resources
