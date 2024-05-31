@@ -1,18 +1,17 @@
-all: bibhardware.a tool
+# Regras principais
+all: tool
 
 tool: registers.o bibhardware.a
-gcc -o tool registers.o -bibhardware -L.
+	gcc -o tool registers.o -lregisters -L.
 
-bibhardware.a: libregisters.o
-      ar rcs bibhardware.a libregisters.o
+bibhardware.a: registers.o
+	ar rcs bibhardware.a registers.o
 
-registers.o: registers.c
-      gcc -c register
+registers.o: registers.c libregisters.h
+	gcc -c registers.c
 
 
-bibhardware.o: libregisters.c
-      gcc -c libregisters.c
 
-clean :
-  rm -f *.o tool *.a
-
+# Limpeza dos arquivos gerados
+clean:
+	rm -f *.o tool *.a
