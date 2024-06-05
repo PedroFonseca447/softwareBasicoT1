@@ -21,3 +21,6 @@ após isso é só dar /make , ./programa e no final ./emulator
 
 
 
+No código eu apenas cheguei a implementar 2/3 do que foi solicitado, é possível alterar a cor e o status de ligado ou desligado do display e a outra parte
+foi implemtar um método que da um get no status da bateria, ambos funcionando e testados. Sobre o texto interativo, foi complicado já tentar tratar caracteres
+especiais então acabei perdendo tempo lidando com ç e assentos. No fim ficando sem tempo para entender como poderia ser um display com mais de 24 caractéres.
