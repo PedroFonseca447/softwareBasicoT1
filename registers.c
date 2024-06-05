@@ -88,38 +88,50 @@ int main() {
 
 
 
-    printf("Current value of R0: 0x%02x\n", *r0);
-    printf("Current value of R1: 0x%02x\n", *r1);
+  //  printf("Current value of R0: 0x%02x\n", *r0);
+  //  printf("Current value of R1: 0x%02x\n", *r1);
 
 
 
     // Write a new value to R0
    // *r0 = *r0 | 0x00;
+   //alterar a cor do led
     set_colorLed(r0,1,0, 1); 
+
+   //alterar a cor do display r, g e b
     set_colorDisplay(r1,r2,0 , 1 ,1 );
+
+   //deixa o display ligado ou nao
     setOnOff(r0,1);
+
+   //teste a operacao
     setOnOff_Operacao(r0,1);
-    //ta invertido
+    
+
+//ta invertido
     setExibicao(r0, 1,1);
 
     //("O display esta %s\n", getEstadoDisplay(r0));
 
+
+      //teste modo de exibição
     printf("O display esta %s\n", getModoExibicao(r0));
 
    
 
     setPalavras(r7, 'l', 'p');
+   //teste para calculo de velocidade
+    //printf("N vezes %d\n", calcularVelocidade(r0));
 
-    printf("N vezes %d\n", calcularVelocidade(r0));
+    //teste para calcular a temperatura
+    //printf("N vezes %f\n", calcularTemperatura(r3));
+
+    //printf("O display esta: %c\n", getLetra(r5,0));
+
+
     
-    printf("N vezes %f\n", calcularTemperatura(r3));
 
-    printf("O display esta: %c\n", getLetra(r5,0));
-
-
-    
-
-    print_binary(*r4);
+    //print_binary(*r4);
     // Release resources
     if (registers_release(map, FILE_SIZE, fd) == -1) {
         return EXIT_FAILURE;
