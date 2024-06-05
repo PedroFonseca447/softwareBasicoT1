@@ -1,0 +1,23 @@
+para rodar o trabalho pode se optar por utilizar pelo terminal:
+
+primeiro passo: 
+
+gcc registers.c -o programa -L -lregisters
+
+
+segundo passo:
+
+./programa
+
+terceiro passo:
+
+./emulator
+
+
+esse programa também possui um makefile, podendo ser executado após a instalação do make na maquina pelo terminal
+
+após isso é só dar /make , ./programa e no final ./emulator
+
+
+
+
