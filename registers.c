@@ -117,7 +117,8 @@ int main() {
       //teste modo de exibição
     printf("O display esta %s\n", getModoExibicao(r0));
 
-   
+    //tese para pegar o nivel da bateria
+      printf("O nivel da bateria %d\n", getBateryLeve(r3));
 
     setPalavras(r7, 'l', 'p');
    //teste para calculo de velocidade
