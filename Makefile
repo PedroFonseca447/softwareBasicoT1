@@ -8,10 +8,10 @@ libregisters.a: registers.o
 	ar rcs libregisters.a registers.o
 
 main.o: main.c libregisters.h
-	gcc -c main.c -o main.o
+	gcc -c main.c
 
 registers.o: registers.c libregisters.h
-	gcc -c registers.c -o registers.o
+	gcc -c registers.c
 
 # Limpeza dos arquivos gerados
 clean:
