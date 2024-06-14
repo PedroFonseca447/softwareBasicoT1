@@ -1,16 +1,14 @@
 # Regras principais
 all: tool
 
-tool: registers.o bibhardware.a
-	gcc -o tool registers.o -lregisters -L.
+tool: biblioteca.o libregisters.a
+	gcc -o tool biblioteca.o -lregisters -L.
 
-bibhardware.a: registers.o
-	ar rcs bibhardware.a registers.o
+libregisters.a: biblioteca.o
+	ar rcs libregisters.a biblioteca.o
 
-registers.o: registers.c libregisters.h
-	gcc -c registers.c
-
-
+biblioteca.o: biblioteca.c libregisters.h
+	gcc -c biblioteca.c
 
 # Limpeza dos arquivos gerados
 clean:
