@@ -1,5 +1,5 @@
-#ifndef REGISTERS_H
-#define REGISTERS_H
+#ifndef LIBREGISTERS_H
+#define LIBREGISTERS_H
 
 #include <stdint.h>
 
@@ -33,4 +33,4 @@ int calcularVelocidade(unsigned short *r0);
 float calcularTemperatura(unsigned short *r3);
 char getLetra(unsigned short *reg, int pos);
 
-#endif /* REGISTERS_H */
+#endif // LIBREGISTERS_H
