@@ -74,20 +74,20 @@ void setPadraoFabrica(unsigned short *reg, int bit){
 
     else if(bit == 1){
           // muda de 0 para um o bit 13 do primeiro registrador  
-        *r0 |= (0x1 << 13);
+        *reg= (0x1 << 13);
         
         //coloca na versão de fábrica a velocidade de exibição
-        *r0 &= ~(0x1 << 2);
-        *r0 &= ~(0x1 << 1);
+        *reg &= ~(0x1 << 2);
+        *reg &= ~(0x1 << 1);
 
         //coloca a velocidade na versão default
     
-        *r0 &= ~(0x3F << 3);
+        *reg &= ~(0x3F << 3);
 
-        *r0 |= (2 & 0x3F) << 3;
+        *reg |= (2 & 0x3F) << 3;
 
         //muda o led de operação do display para o padrao de fabrica
-        *r0 &= ~(0x1 << 9);
+        *reg &= ~(0x1 << 9);
 
     }
 
